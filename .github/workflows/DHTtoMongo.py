@@ -52,11 +52,16 @@ while True:
                     "temperature_celsius": temperature_c,
                     "humidity": humidity }
         
-        #insert document into database collection
-        doc_id = collection.insert_one(document).inserted_id
+        try:
+            #insert document into database collection
+            doc_id = collection.insert_one(document).inserted_id
+
+            print("Recorded reading to document {}".format(doc_id))
+            time.sleep(10)
         
-        print("Recorded reading to document {}".format(doc_id))
-        time.sleep(10)
+        except:
+            print("error writing to collection")
+            continue
 
     except RuntimeError as error:
         #try again after sensor read error
