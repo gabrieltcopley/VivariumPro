@@ -69,7 +69,9 @@ while True:
         time.sleep(2.0)
         continue
     except Exception as error:
-        dhtDevice.exit()
-        raise error
-
+        #dhtDevice.exit()
+        #raise error
+        print("exception occurred, trying again in 2 seconds")
+        time.sleep(2.0)
+        continue
     time.sleep(300.0)
